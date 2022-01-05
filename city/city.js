@@ -17,6 +17,8 @@ const sloganListEl = document.querySelector('.slogan-list');
 
 
 
+
+
 logoutButton.addEventListener('click', () => {
     logout();
 });
