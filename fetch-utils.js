@@ -23,6 +23,22 @@ export async function getCity() {
     return checkError(response);
 }
 
+export async function createDefaultCity(){
+    const response = await client
+        .from('cities')
+        .insert([
+            {
+                name: 'Boise',
+                waterfront_id:1,
+                skyline_id: 1,
+                castle_id: 1,
+                slogans: []
+            }
+        ]);
+        
+    return checkError(response);
+
+}
 
 export async function getUser() {
     return client.auth.session();
