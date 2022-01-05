@@ -1,4 +1,4 @@
-import { checkAuth, logout } from '../fetch-utils.js';
+import { checkAuth, createDefaultCity, getCity, logout } from '../fetch-utils.js';
 
 // checkAuth();
 
@@ -15,12 +15,29 @@ const sloganListEl = document.querySelector('.slogan-list');
 
 
 
-
-
-
-
 logoutButton.addEventListener('click', () => {
     logout();
 });
 
+window.addEventListener('load', async() =>{
+    const city = await getCity();
 
+    if (!city) {
+        const newCity = await createDefaultCity();
+
+    }
+    else{
+        displayCity();
+    }
+
+
+
+})
+
+function displayCity(city){
+    waterfrontImgEl.src = `../assets/waterfront=${city.waterfront_id}.jpg`;
+
+    skylineImgEl.src = `../assets/skyline=${city.skyline_id}.jpg`;
+
+    castleImgEl.src = `../assets/castle=${city.castle_id}.jpg`;
+}
