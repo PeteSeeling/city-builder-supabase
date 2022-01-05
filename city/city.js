@@ -41,4 +41,12 @@ function displayCity(city){
     skylineImgEl.src = `../assets/skyline-${city.skyline_id}.jpg`;
 
     castleImgEl.src = `../assets/castle-${city.castle_id}.jpg`;
+
+    for (let slogan of city.slogans){
+        const sloganEl = document.createElement('p');
+
+        sloganEl.classList.add('slogan');
+        sloganEl.textContent = slogan;
+        sloganListEl.append(sloganEl);
+    }
 }
