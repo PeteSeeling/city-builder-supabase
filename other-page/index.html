@@ -21,7 +21,67 @@
     </header>    
     <button id="logout">Logout</button>
     <main>
-        <h1>You are logged in!</h1>
+       <section>
+           <h2>Welcome to Wonderful<span class ="city-name"></span></h2>
+       </section>
+       <section class = "pictures">
+           <div class="waterfront">
+               <img class="water-img" />
+           </div>
+
+           <div class="skyline">
+            <img class="skyline-img" />
+        </div>
+
+        <div class="castle">
+            <img class="castle-img" />
+        </div>
+
+       </section>
+       <section class="slogan-section">
+           <h2>Slogans</h2>
+           <div class="slogan-list"></div>
+       </section>
+
+       <section class="inputs">
+           <form class="slogan-form">
+           <input name="slogan" />
+           <button>Add A Slogan</button>
+        </form>
+
+        <form clas="name-form">
+            <input name="name" />
+            <button>Change Name</button>
+        </form>
+        </div>
+
+        <div class="dropdowns">
+            <label>
+                Waterfront
+                <select id="water-dropdown">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </label>
+            <label>
+                Skyline
+                <select id="skyline-dropdown">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </label>
+            <label>
+                Castle
+                <select id="castle-dropdown">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </label>
+        </div>
+       </section>
     </main>
     <footer>
         <div class="copy gutter-right">&copy; 2021 Alchemy Code Lab</div>
