@@ -130,6 +130,12 @@ footer {
     margin: 10px;
 }
 .pictures{
+    display:flex;
+    flex-direction: row;
+    
+   
+}
+.water-img, .skyline-img, .castle-img{
     height:200px;
-    width:200px;
+    width:200px
 }

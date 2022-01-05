@@ -12,6 +12,7 @@ const waterfrontDropdown = document.querySelector('#water-dropdown');
 const skylineDropdown = document.querySelector('#skyline-dropdown');
 const castleDropdown = document.querySelector('#castle-dropdown');
 const sloganListEl = document.querySelector('.slogan-list');
+const cityNameEl = document.querySelector('.city-name');
 
 
 
@@ -26,18 +27,18 @@ window.addEventListener('load', async() =>{
         const newCity = await createDefaultCity();
 
     }
-    else{
-        displayCity();
+    else {
+        displayCity(city);
     }
+});
 
-
-
-})
 
 function displayCity(city){
-    waterfrontImgEl.src = `../assets/waterfront=${city.waterfront_id}.jpg`;
 
-    skylineImgEl.src = `../assets/skyline=${city.skyline_id}.jpg`;
+    cityNameEl.textContent = city.name;
+    waterfrontImgEl.src = `../assets/waterfront-${city.waterfront_id}.jpg`;
 
-    castleImgEl.src = `../assets/castle=${city.castle_id}.jpg`;
+    skylineImgEl.src = `../assets/skyline-${city.skyline_id}.jpg`;
+
+    castleImgEl.src = `../assets/castle-${city.castle_id}.jpg`;
 }
