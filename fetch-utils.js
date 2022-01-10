@@ -46,6 +46,16 @@ export async function updateSlogans(newSlogan){
     
 }
 
+export async function updateSkylineId(newId){
+    const response = await client
+        .from('cities')
+        .update({ skyline_id: newId })
+        // .match({ user_id: user.user.id })
+        .single();
+
+    return checkError(response);
+}
+
 export async function getUser() {
     return client.auth.session();
 }

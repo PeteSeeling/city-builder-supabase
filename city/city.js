@@ -1,4 +1,4 @@
-import { checkAuth, createDefaultCity, getCity, logout, updateName, updateSlogans } from '../fetch-utils.js';
+import { checkAuth, createDefaultCity, getCity, logout, updateName, updateSkylineId, updateSlogans } from '../fetch-utils.js';
 
 // checkAuth();
 
@@ -71,9 +71,17 @@ slogansForm.addEventListener('submit', async(e) =>{
     const data = new FormData(slogansForm);
     const newSlogan = data.get('slogan');
     const city = await getCity();
+
     slogansForm.reset();
+
     city.slogans.push(newSlogan);
     const newCity = await updateSlogans(city.slogans);
+
+    displayCity(newCity);
+});
+
+skylineDropdown.addEventListener('change', async() =>{
+    const newCity = await updateSkylineId(skylineDropdown.value);
 
     displayCity(newCity);
 });
