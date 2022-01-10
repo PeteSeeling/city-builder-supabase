@@ -1,4 +1,4 @@
-import { checkAuth, createDefaultCity, getCity, logout, updateName, updateSkylineId, updateSlogans, updateCastleId } from '../fetch-utils.js';
+import { checkAuth, createDefaultCity, getCity, logout, updateName, updateSkylineId, updateSlogans, updateCastleId, updateWaterfrontId } from '../fetch-utils.js';
 
 // checkAuth();
 
@@ -88,6 +88,12 @@ skylineDropdown.addEventListener('change', async() =>{
 
 castleDropdown.addEventListener('change', async() =>{
     const newCity = await updateCastleId(castleDropdown.value);
+
+    displayCity(newCity);
+});
+
+waterfrontDropdown.addEventListener('change', async() =>{
+    const newCity = await updateWaterfrontId(waterfrontDropdown.value);
 
     displayCity(newCity);
 });

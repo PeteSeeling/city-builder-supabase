@@ -65,6 +65,15 @@ export async function updateCastleId(newId){
 
     return checkError(response);
 }
+export async function updateWaterfrontId(newId){
+    const response = await client
+        .from('cities')
+        .update({ waterfront_id: newId })
+        // .match({ user_id: user.user.id })
+        .single();
+
+    return checkError(response);
+}
 
 export async function getUser() {
     return client.auth.session();
