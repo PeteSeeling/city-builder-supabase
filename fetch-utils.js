@@ -10,7 +10,7 @@ export async function updateName(name) {
         .from('cities')
         .update({ name: name });
         // .match({ id: id });
-console.log(response.data);
+
     return checkError(response);
 }
 
@@ -35,9 +35,15 @@ export async function createDefaultCity(){
                 slogans: []
             }
         ]);
-        
+}
+export async function updateSlogans(newSlogan){
+    const response = await client 
+        .from('cities')
+        .update({ slogans: newSlogan })
+        .single();
+            
     return checkError(response);
-
+    
 }
 
 export async function getUser() {

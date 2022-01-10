@@ -1,4 +1,4 @@
-import { checkAuth, createDefaultCity, getCity, logout, updateName } from '../fetch-utils.js';
+import { checkAuth, createDefaultCity, getCity, logout, updateName, updateSlogans } from '../fetch-utils.js';
 
 // checkAuth();
 
@@ -6,7 +6,7 @@ const logoutButton = document.getElementById('logout');
 const waterfrontImgEl = document.querySelector('.water-img');
 const skylineImgEl = document.querySelector('.skyline-img');
 const castleImgEl = document.querySelector('.castle-img');
-const sloganForm = document.querySelector('.slogan-form');
+const slogansForm = document.querySelector('.slogan-form');
 const nameForm = document.querySelector('.name-form');
 const waterfrontDropdown = document.querySelector('#water-dropdown');
 const skylineDropdown = document.querySelector('#skyline-dropdown');
@@ -25,7 +25,7 @@ window.addEventListener('load', async() =>{
 
     if (!city) {
         const newCity = await createDefaultCity();
-
+        displayCity(newCity);
     }
     else {
         displayCity(city);
@@ -33,8 +33,7 @@ window.addEventListener('load', async() =>{
 });
 
 
-async function displayCity(city){
-    const newName = await updateName();
+function displayCity(city){
 
     cityNameEl.textContent = city.name;
     waterfrontImgEl.src = `../assets/waterfront-${city.waterfront_id}.jpg`;
@@ -55,15 +54,26 @@ async function displayCity(city){
 nameForm.addEventListener('submit', async(e) =>{
     e.preventDefault();
 
-    
     const data = new FormData(nameForm);
     const name = data.get('name');
 
-    await updateName(name);
-    displayCity();
+    const newCity = await updateName(name);
 
 
-  
+    displayCity(newCity);
+});
 
+slogansForm.addEventListener('submit', async(e) =>{
+    e.preventDefault();
 
+    sloganListEl.textContent = '';
+
+    const data = new FormData(slogansForm);
+    const newSlogan = data.get('slogan');
+    const city = await getCity();
+    slogansForm.reset();
+    city.slogans.push(newSlogan);
+    const newCity = await updateSlogans(city.slogans);
+
+    displayCity(newCity);
 });
