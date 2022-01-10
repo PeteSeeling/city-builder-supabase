@@ -56,6 +56,16 @@ export async function updateSkylineId(newId){
     return checkError(response);
 }
 
+export async function updateCastleId(newId){
+    const response = await client
+        .from('cities')
+        .update({ castle_id: newId })
+        // .match({ user_id: user.user.id })
+        .single();
+
+    return checkError(response);
+}
+
 export async function getUser() {
     return client.auth.session();
 }
