@@ -8,9 +8,9 @@ export async function updateName(name) {
 
     const response = await client
         .from('cities')
-        .update({ name: name })
-        .match({ user_id: user.id });
-console.log(response);
+        .update({ name: name });
+        // .match({ id: id });
+console.log(response.data);
     return checkError(response);
 }
 

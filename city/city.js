@@ -1,4 +1,4 @@
-import { checkAuth, createDefaultCity, getCity, logout } from '../fetch-utils.js';
+import { checkAuth, createDefaultCity, getCity, logout, updateName } from '../fetch-utils.js';
 
 // checkAuth();
 
@@ -33,7 +33,8 @@ window.addEventListener('load', async() =>{
 });
 
 
-function displayCity(city){
+async function displayCity(city){
+    const newName = await updateName();
 
     cityNameEl.textContent = city.name;
     waterfrontImgEl.src = `../assets/waterfront-${city.waterfront_id}.jpg`;
@@ -50,3 +51,19 @@ function displayCity(city){
         sloganListEl.append(sloganEl);
     }
 }
+
+nameForm.addEventListener('submit', async(e) =>{
+    e.preventDefault();
+
+    
+    const data = new FormData(nameForm);
+    const name = data.get('name');
+
+    await updateName(name);
+    displayCity();
+
+
+  
+
+
+});
