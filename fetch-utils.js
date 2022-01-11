@@ -4,13 +4,13 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsI
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export async function updateName(name) {
-    const user = getUser();
-
+    
+   
     const response = await client
         .from('cities')
         .update({ name: name });
         // .match({ id: id });
-
+        
     return checkError(response);
 }
 
@@ -34,7 +34,10 @@ export async function createDefaultCity(){
                 castle_id: 1,
                 slogans: []
             }
+
+            
         ]);
+    return checkError(response);
 }
 export async function updateSlogans(newSlogan){
     const response = await client 
@@ -88,7 +91,7 @@ export async function checkAuth() {
 
 export async function redirectIfLoggedIn() {
     if (await getUser()) {
-        location.replace('./other-page');
+        location.replace('./bigcity');
     }
 }
 

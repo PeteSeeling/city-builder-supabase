@@ -20,6 +20,7 @@ logoutButton.addEventListener('click', () => {
     logout();
 });
 
+
 window.addEventListener('load', async() =>{
     const city = await getCity();
 
@@ -58,8 +59,7 @@ nameForm.addEventListener('submit', async(e) =>{
     const name = data.get('name');
 
     const newCity = await updateName(name);
-
-
+  
     displayCity(newCity);
 });
 
