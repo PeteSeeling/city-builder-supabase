@@ -5,12 +5,11 @@ const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export async function updateName(name) {
     
-   
     const response = await client
         .from('cities')
         .update({ name: name });
         // .match({ id: id });
-        
+        console.log(response)
     return checkError(response);
 }
 
