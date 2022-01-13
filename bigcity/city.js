@@ -34,7 +34,8 @@ window.addEventListener('load', async() =>{
 });
 
 
-function displayCity(city){
+async function displayCity(city){
+    await getCity(city);
 
     cityNameEl.textContent = city.name;
     waterfrontImgEl.src = `../assets/waterfront-${city.waterfront_id}.jpg`;
