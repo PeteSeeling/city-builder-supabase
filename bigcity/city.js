@@ -14,6 +14,7 @@ const castleDropdown = document.querySelector('#castle-dropdown');
 const sloganListEl = document.querySelector('.slogan-list');
 const cityNameEl = document.querySelector('.city-name');
 
+checkAuth();
 
 
 logoutButton.addEventListener('click', () => {
