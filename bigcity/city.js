@@ -34,25 +34,6 @@ window.addEventListener('load', async() =>{
 });
 
 
-async function displayCity(city){
-    await getCity(city);
-
-    cityNameEl.textContent = city.name;
-    waterfrontImgEl.src = `../assets/waterfront-${city.waterfront_id}.jpg`;
-
-    skylineImgEl.src = `../assets/skyline-${city.skyline_id}.jpg`;
-
-    castleImgEl.src = `../assets/castle-${city.castle_id}.jpg`;
-
-    for (let slogan of city.slogans){
-        const sloganEl = document.createElement('p');
-
-        sloganEl.classList.add('slogan');
-        sloganEl.textContent = slogan;
-        sloganListEl.append(sloganEl);
-    }
-}
-
 nameForm.addEventListener('submit', async(e) =>{
     e.preventDefault();
 
@@ -98,3 +79,22 @@ waterfrontDropdown.addEventListener('change', async() =>{
 
     displayCity(newCity);
 });
+
+function displayCity(city){
+    sloganListEl.textContent = '';
+
+    cityNameEl.textContent = city.name;
+    waterfrontImgEl.src = `../assets/waterfront-${city.waterfront_id}.jpg`;
+
+    skylineImgEl.src = `../assets/skyline-${city.skyline_id}.jpg`;
+
+    castleImgEl.src = `../assets/castle-${city.castle_id}.jpg`;
+
+    for (let slogan of city.slogans){
+        const sloganEl = document.createElement('p');
+
+        sloganEl.classList.add('slogan');
+        sloganEl.textContent = slogan;
+        sloganListEl.append(sloganEl);
+    }
+}
