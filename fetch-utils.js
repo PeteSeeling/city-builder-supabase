@@ -4,16 +4,20 @@ const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsI
 const client = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 export async function updateName(name) {
-    
+    const user = await getUser();
+
     const response = await client
         .from('cities')
-        .update({ name: name });
-        // .match({ id: id });
-        console.log(response)
+        .update({ name: name })
+        .match({ user_id: user.user.id })
+        .single();
+        
+        
     return checkError(response);
 }
 
 export async function getCity() {
+
     const response = await client
         .from('cities')
         .select()
@@ -33,15 +37,16 @@ export async function createDefaultCity(){
                 castle_id: 1,
                 slogans: []
             }
-
-            
         ]);
     return checkError(response);
 }
 export async function updateSlogans(newSlogan){
+    const user = await getUser();
+    
     const response = await client 
         .from('cities')
         .update({ slogans: newSlogan })
+        .match({ user_id: user.user.id })
         .single();
             
     return checkError(response);
@@ -49,29 +54,33 @@ export async function updateSlogans(newSlogan){
 }
 
 export async function updateSkylineId(newId){
+    const user = await getUser();
     const response = await client
         .from('cities')
         .update({ skyline_id: newId })
-        // .match({ user_id: user.user.id })
+        .match({ user_id: user.user.id })
         .single();
 
     return checkError(response);
 }
 
 export async function updateCastleId(newId){
+    const user = await getUser();
+
     const response = await client
         .from('cities')
         .update({ castle_id: newId })
-        // .match({ user_id: user.user.id })
+        .match({ user_id: user.user.id })
         .single();
 
     return checkError(response);
 }
 export async function updateWaterfrontId(newId){
+    const user = await getUser();
     const response = await client
         .from('cities')
         .update({ waterfront_id: newId })
-        // .match({ user_id: user.user.id })
+        .match({ user_id: user.user.id })
         .single();
 
     return checkError(response);
