@@ -94,7 +94,7 @@ export async function getUser() {
 export async function checkAuth() {
     const user = await getUser();
 
-    if (!user) location.replace('../'); 
+    if (!user) location.replace('https://peteseeling.github.io/city-builder-supabase/'); 
 }
 
 export async function redirectIfLoggedIn() {
