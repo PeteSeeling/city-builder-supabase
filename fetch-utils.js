@@ -42,7 +42,7 @@ export async function createDefaultCity(){
 }
 export async function updateSlogans(newSlogan){
     const user = await getUser();
-    
+
     const response = await client 
         .from('cities')
         .update({ slogans: newSlogan })
@@ -118,7 +118,7 @@ export async function signInUser(email, password){
 export async function logout() {
     await client.auth.signOut();
 
-    return window.location.href = '/';
+    return window.location.href = '../';
 }
 
 function checkError({ data, error }) {
